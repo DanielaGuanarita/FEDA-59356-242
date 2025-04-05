@@ -35,36 +35,38 @@
 
 #estacion de control
 
-class Torre_de_control:
-    def __init__(self):
-        self.naves = []
+# class Torre_de_control:
+#     def __init__(self):
+#         self.naves = []
     
-    def entrada_naves(self, nave):
-        self.naves.append(nave)
+#     def entrada_naves(self, nave):
+#         self.naves.append(nave)
 
-    def salida_naves(self):
-        if not self.sin_naves():
-            return self.naves.pop()
-        else:
-            return 'No hay naves en plataforma.'
+#     def salida_naves(self):
+#         if not self.sin_naves():
+#             return self.naves.pop()
+#         else:
+#             return 'No hay naves en plataforma.'
 
-    def sin_naves(self):
-        return len(self.naves)== 0
+#     def sin_naves(self):
+#         return len(self.naves)== 0
 
-    def ver_salida_naves(self):
-        if not self.sin_naves():
-            return self.naves[-1]
-        else:
-            return 'No hay naves en plataforma.'
+#     def ver_salida_naves(self):
+#         if not self.sin_naves():
+#             return self.naves[-1]
+#         else:
+#             return 'No hay naves en plataforma.'
 
-pista_despegue = Torre_de_control()
-pista_despegue.entrada_naves('Apolo')
-pista_despegue.entrada_naves('Discovery')
-pista_despegue.entrada_naves('Orión')
+# pista_despegue = Torre_de_control()
+# pista_despegue.entrada_naves('Apolo')
+# pista_despegue.entrada_naves('Discovery')
+# pista_despegue.entrada_naves('Orión')
 
-print('Nave por despegar: ', pista_despegue.ver_salida_naves())
-print('Esta vacia la pista: ', pista_despegue.sin_naves())
-print('Nave que despego: ', pista_despegue.salida_naves())
-print('Nave que despego: ', pista_despegue.salida_naves())
-print('Nave que despego: ', pista_despegue.salida_naves())
-print('Esta vacia la pista: ', pista_despegue.sin_naves())
+# print('Nave por despegar: ', pista_despegue.ver_salida_naves())
+# print('Esta vacia la pista: ', pista_despegue.sin_naves())
+# print('Nave que despego: ', pista_despegue.salida_naves())
+# print('Nave que despego: ', pista_despegue.salida_naves())
+# print('Nave que despego: ', pista_despegue.salida_naves())
+# print('Esta vacia la pista: ', pista_despegue.sin_naves())
+
+
