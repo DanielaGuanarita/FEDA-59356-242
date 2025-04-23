@@ -18,7 +18,7 @@ class Nave:
     def __str__(self):
         return f"{self.nombre}, prioridad: {self.prioridad}"
 
-    def prioridad_valor(self):
+    def valor_prioridad(self):
         prioridades = {"Alta": 3, "Media": 2, "Baja": 1}
         return prioridades[self.prioridad]
 
@@ -42,32 +42,36 @@ class GeneradorDeNaves:
 
 class TorreDeControl:
     def __init__(self):
-        self.plataforma = []
+        self.pila = []
 
     def aterrizar_naves(self, naves):
-        random.shuffle(naves)
-        print("\n *Naves aterrizando en la plataforma*")
+        print("\n **Naves aterrizando en la plataforma**")
         for nave in naves:
             print(f"La nave '{nave.nombre}' con prioridad '{nave.prioridad}' ha aterrizado.")
-            self.plataforma.append(nave)
+            self.pila.append(nave)
 
     def mostrar_naves(self):
-        if not self.plataforma:
+        if not self.pila:
             print("La plataforma está vacía.")
             return
-        print("\n *Naves en la plataforma por prioridad*")
-        for nave in sorted(self.plataforma, key=lambda n: n.prioridad_valor(), reverse=True):
+        print("\n **Naves en la plataforma**")
+        for nave in reversed(self.pila):
             print(f"Nave: {nave.nombre}, prioridad: {nave.prioridad}")
 
     def despegar_naves(self):
-        print("\n *Naves en la plataforma despegando*")
-        while self.plataforma:
-            self.plataforma.sort(key=lambda nave: nave.prioridad_valor(), reverse=True)
-            nave_que_despega = self.plataforma.pop(0)
-            print(f"La nave '{nave_que_despega.nombre}' con prioridad '{nave_que_despega.prioridad}' ha despegado.")
+        print("\n **Despegue de naves por prioridad**")
+        prioridades = {"Alta": 3, "Media": 2, "Baja": 1}
+        while self.pila:
+            # Buscar nave con prioridad más alta
+            mayor_prioridad = max(nave.valor_prioridad() for nave in self.pila)
+            for i in range(len(self.pila)-1, -1, -1):  # Recorrer desde el tope de la pila
+                if self.pila[i].valor_prioridad() == mayor_prioridad:
+                    nave = self.pila.pop(i)
+                    print(f"La nave '{nave.nombre}' con prioridad '{nave.prioridad}' ha despegado.")
+                    break
 
     def plataforma_vacia(self):
-        return len(self.plataforma) == 0
+        return len(self.pila) == 0
 
 
 if __name__ == "__main__":
